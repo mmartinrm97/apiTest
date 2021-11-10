@@ -19,7 +19,10 @@ class ProductoResource extends JsonResource
         return [
             "producto_id" => $this->id,
             "descripcion" => $this->descripcion,
-            "locales" => LocalResource::collection($this->locales)
+            "locales" => $this->whenLoaded(
+                'locales',
+                LocalResource::collection($this->locales), null
+            )
         ];
     }
 }

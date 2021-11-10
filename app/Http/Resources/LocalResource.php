@@ -15,7 +15,6 @@ class LocalResource extends JsonResource
     public function toArray($request)
     {
         // return parent::toArray($request);
-
         return [
             "local_id" => $this->id,
             "descripcion" => $this->descripcion,

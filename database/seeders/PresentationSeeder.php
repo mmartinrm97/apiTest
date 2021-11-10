@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Presentacion;
+use App\Models\Presentation;
 use Illuminate\Database\Seeder;
 
-class PresentacionSeeder extends Seeder
+class PresentationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class PresentacionSeeder extends Seeder
      */
     public function run()
     {
-        Presentacion::factory(10)->create();
+        Presentation::factory(30)->create();
     }
 }

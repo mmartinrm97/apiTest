@@ -2,18 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Local;
+use App\Models\LocalProduct;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class LocalFactory extends Factory
+class PresentationFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Local::class;
-
     /**
      * Define the model's default state.
      *
@@ -22,7 +15,8 @@ class LocalFactory extends Factory
     public function definition()
     {
         return [
-            'descripcion' => 'Local '.$this->faker->city(6),
+            'price' => $this->faker->numberBetween(50, 100),
+            'presentation' => $this->faker->numberBetween(1,9) . ' u.'
         ];
     }
 }

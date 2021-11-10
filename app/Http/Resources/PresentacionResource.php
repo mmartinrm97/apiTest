@@ -14,12 +14,13 @@ class PresentacionResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
 
-        // dd($this->pivot->local_id);
+        // return parent::toArray($request);
         return [
-            // "presentaciones" => $this->presentacionesProducto(2)
-            "presentaciones" => $this->presentaciones
+            "presentacion_id" => $this->id,
+            "cantidad" => $this->cantidad,
+            "precio" => $this->precio,
+
         ];
     }
 }

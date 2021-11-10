@@ -5,23 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Local extends Model
+class Product extends Model
 {
     use HasFactory;
-    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
     protected $fillable = [
         'descripcion'
     ];
 
-    public function products()
+    public function locals()
     {
-        // return $this->belongsToMany(Product::class)->using(LocalProduct::class)
-        //     ->withPivot(['id', 'is_active'])->withTimestamps();
+        // return $this->belongsToMany(Local::class, 'locals_products')
+        //     ->withPivot('is_active')->withTimestamps();
 
-        return $this->belongsToMany(Product::class)->using(LocalProduct::class)
+        return $this->belongsToMany(Local::class)->using(LocalProduct::class)
             ->withPivot(['id', 'is_active'])
             ->withTimestamps();
+
+        // return $this->hasMany(LocalProduct::class);
     }
 
     public function presentations()
@@ -29,7 +30,7 @@ class Local extends Model
         return $this->hasManyThrough(
             Presentation::class,
             LocalProduct::class,
-            'local_id',
+            'product_id',
             'local_product_id'
         );
     }

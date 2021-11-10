@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocalProductoPresentacionesTable extends Migration
+class CreateLocalProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,20 @@ class CreateLocalProductoPresentacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('local_producto_presentacions', function (Blueprint $table) {
+        Schema::create('local_product', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignId('local_producto_id')
+            $table->foreignId('local_id')
             ->unsigned()
-            ->constrained('local_producto')
+            ->constrained('locals')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreignId('presentacion_id')
+            $table->foreignId('product_id')
             ->unsigned()
-            ->constrained('presentacions')
+            ->constrained('products')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-
-            $table->boolean('activo')->default(true);
-
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -41,6 +38,6 @@ class CreateLocalProductoPresentacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('local_producto_presentaciones');
+        Schema::dropIfExists('local_product');
     }
 }
